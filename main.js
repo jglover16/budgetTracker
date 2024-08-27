@@ -63,7 +63,10 @@ function addTransaction(source, amount){
 
 form.addEventListener("submit", event => {
     event.preventDefault();
-    addTransaction(form.source.value, Number(form.amount.value));
+    if(form.source.value.trim() === "" || form.amount.value === "" || form.amount.value == 0){
+        return alert("Please add proper values.");
+    }
+    addTransaction(form.source.value.trim(), Number(form.amount.value));
     updateStats();
     form.reset();
 });
